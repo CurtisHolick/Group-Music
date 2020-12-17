@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <style>
+        a.block-interactive {
+            background-color: var(--nav-color);
+        }
+    </style>
+    <h1>Search results for "{{ query }}"</h1>
+    <h3><a href="{{ url_for('add_song') }}" class="block-interactive" id="new-search">New Search</a></h3>
+
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+{#        {% if results|length >= 1 %}#}
+{#        <div id="songradio">#}
+{#        <input type="radio" name="song_radio_buttons" id="song1" value='1'>#}
+{#                <iframe id='song_result' src="https://open.spotify.com/embed?uri=spotify:track:{{ results[0] }}"#}
+{#                        width="500" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>#}
+{#        </input></div>#}
+{#        {% if results|length >= 2 %}#}
+{#        <div id="songradio">#}
+{#        <input type="radio" name="song_radio_buttons" id="song2" value="2">#}
+{#                <iframe id='song_result' src="https://open.spotify.com/embed?uri=spotify:track:{{ results[1] }}"#}
+{#                        width="500" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>#}
+{#        </input>#}
+{#        </div>#}
+{#        {% if results|length >= 3 %}#}
+{#        <div id="songradio">#}
+{#        <input type="radio" name="song_radio_buttons" id="song3" value="3">#}
+{#                <iframe id='song_result' src="https://open.spotify.com/embed?uri=spotify:track:{{ results[2] }}"#}
+{#                        width="500" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>#}
+{#        </input>#}
+{#        </div>#}
+{#        {% if results|length >= 4 %}#}
+{#        <div id="songradio">#}
+{#        <input type="radio" name="song_radio_buttons" id="song4" value="4">#}
+{#                <iframe class='song_result' src="https://open.spotify.com/embed?uri=spotify:track:{{ results[3] }}"#}
+{#                        width="500" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>#}
+{#        </input>#}
+{#        </div>#}
+{#        {% if results|length >= 5 %}#}
+{#        <div id="songradio">#}
+{#        <input type="radio" name="song_radio_buttons" id="song5" value="5">#}
+{#                <iframe class='song_result' src="https://open.spotify.com/embed?uri=spotify:track:{{ results[4] }}"#}
+{#                        width="500" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>#}
+{#        </input>#}
+{#        </div>#}
+{#        {% endif %}#}
+{#        {% endif %}#}
+{#        {% endif %}#}
+{#        {% endif %}#}
+{#        {% else %}#}
+{#        <h3>No Results!</h3>#}
+{#        {% endif %}#}
+
+
+        {% if not results == [''] %}
+            {% for result in results %}
+                <div class="single-song-embed">
+                    <input type="radio" name="song_radio_buttons" id="song{{ loop.index }}" value='{{ loop.index }}'>
+                    <iframe id='song_result' src="https://open.spotify.com/embed?uri=spotify:track:{{ result }}" width="500" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                </div>
+
+            {% endfor %}
+        {% else %}
+            <p>No results</p>
+        {% endif %}
+
+        <p>{{ form.submit(class="block-interactive") }}</p>
+    </form>
+{% endblock %}

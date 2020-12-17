@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='login.css') }}" id="user_css" media="all">
+    <div class="basic">
+        <h1>Sign In</h1>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p class="input-field">
+                <span class="input-container">
+                    {{ form.username(size=32, placeholder='Username', class="login-info-input") }}
+                    <span class="input-title">Username</span>
+                </span>
+                {% for error in form.username.errors %}
+                    <span style='color: var(--text-normal);'>[{{ error }}]</span>
+                {% endfor %}
+
+            </p>
+            <p class="input-field">
+                <span class="input-container">
+                    {{ form.password(size=32, placeholder='Password', class="login-info-input") }}
+                    <span class="input-title">Password</span>
+                </span>
+                {% for error in form.password.errors %}
+                    <span style="color: var(--text-normal);">[{{ error }}]</span>
+                {% endfor %}
+            </p>
+
+            <p id="remember-me-input-p">
+                {{ form.remember_me() }}<label for="remember_me" id="custom-checkbox"></label> {{ form.remember_me.label }}
+            </p>
+            <p>{{ form.submit(class="block-interactive login-block") }}</p>
+        </form>
+        <p><a class="block-interactive login-block" id="new-account-link" href="{{ url_for('register') }}">Create new account</a></p>
+    </div>
+{% endblock %}

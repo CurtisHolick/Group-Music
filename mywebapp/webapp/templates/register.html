@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='register.css') }}" id="user_css" media="all">
+    <div class="basic">
+        <h1>Register</h1>
+        <form action="" method="post">
+            {{ form.hidden_tag() }}
+            <p class="input-field">
+                <span class="input-container">
+                    {{ form.username(size=32, placeholder='Username', class="register-info-input") }}
+                    <span class="input-title">Username</span>
+                </span>
+                {% for error in form.username.errors %}
+                    <span style='color: var(--text-normal);'>[{{ error }}]</span>
+                {% endfor %}
+            </p>
+            <p class="input-field">
+                <span class="input-container">
+                    {{ form.email(size=32, placeholder='Email', class="register-info-input") }}
+                    <span class="input-title">Email</span>
+                </span>
+                    {% for error in form.email.errors %}
+                        <span style='color: var(--text-normal);'>[{{ error }}]</span>
+                    {% endfor %}
+            </p>
+            <p class="input-field">
+                <span class="input-container">
+                    {{ form.password(size=32, placeholder='Password', class="register-info-input") }}
+                    <span class="input-title">Password</span>
+                </span>
+                    {% for error in form.password.errors %}
+                        <span style='color: var(--text-normal);'>[{{ error }}]</span>
+                    {% endfor %}
+            </p>
+            <p class="input-field">
+                <span class="input-container">
+                    {{ form.password2(size=32, placeholder='Confirm Password', class="register-info-input") }}
+                    <span class="input-title">Confirm Password</span>
+                </span>
+                    {% for error in form.password2.errors %}
+                        <span style='color: var(--text-normal);'>[{{ error }}]</span>
+                    {% endfor %}
+            </p>
+            <br>
+            <p>{{ form.submit(class="block-interactive") }}</p>
+        </form>
+    </div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'add_song.html' %}
+
+{% block results_content %}
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='inline_search_results.css') }}" id="add_song_css" media="all">
+    <script type="text/javascript">
+        document.getElementById('search-bar').value='{{ query }}';
+
+    </script>
+    <br>
+{#    <form action="" method="post">#}
+{#        {{ selection_form.hidden_tag() }}#}
+    {% if not results == [''] %}
+        {% for result in results %}
+            <div class="song-flex-box">
+{#                    <input type="radio" name="song_radio_buttons" id="song{{ loop.index }}" value='{{ loop.index }}'>#}
+                <iframe class="single-song-embed" id='song_result' src="https://open.spotify.com/embed?uri=spotify:track:{{ result }}" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+                <form action="" class="add-button-form" method="post">
+                    <input type="submit" name="name{{ loop.index }}" value="Add" class="block-interactive">
+                </form>
+
+            </div>
+            <br>
+
+        {% endfor %}
+    {% else %}
+        <p>No results</p>
+    {% endif %}
+
+{#        <p>{{ selection_form.submit(class="block-interactive") }}</p>#}
+{#    </form>#}
+{% endblock %}

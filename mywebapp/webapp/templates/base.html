@@ -1,0 +1,129 @@
+<html>
+<head>
+    {% if title %}
+    <title>{{ title }} - Group Music</title>
+    {% else %}
+    <title>Group Music</title>
+    {% endif %}
+    <link rel="stylesheet" href="https://use.typekit.net/gqc5wnu.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='dark_theme.css') }}" id="theme_css" media="all">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='master.css') }}" id="master_css" media="all">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='base.css') }}" id="base_css" media="all">
+
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <a href="{{ url_for('index') }}" style="text-decoration: none; color: var(--text-normal);">
+            <h2>Group Music</h2>
+        </a>
+    </header>
+
+    <!--{% if not current_user.is_anonymous %}-->
+        <!--Logged in as {{ current_user.username.capitalize() }}<br>-->
+        <!--{% endif %}-->
+
+    <nav>
+        <!--{% if not current_user.is_anonymous %}-->
+        <!--Logged in as {{ current_user.username.capitalize() }}<br>-->
+        <!--{% endif %}-->
+        <div id="gradient"></div>
+
+        {% if current_user.is_anonymous %}
+            <a href="{{ url_for('login') }}" class="block-interactive">Login</a>
+        {% else %}
+            <a href="{{ url_for('index') }}" class="block-interactive">Home</a>
+            <a href="{{ url_for('user', username=current_user.username) }}" class="block-interactive">My Songs</a>
+
+            <a id="logout" href="{{ url_for('logout') }}" class="block-interactive">Logout</a>
+
+
+
+            {% if current_user.username == 'curtis' %}
+                <a href="{{ url_for('admin.index_view') }}" class="block-interactive">Admin</a>
+            {% endif %}
+        {% endif %}
+        <button type="button" onclick="changeTheme()" id="theme_button" class="block-interactive">Use Light Theme</button>
+        <script type="text/javascript">
+            if(localStorage.getItem('theme') == null){
+                localStorage.setItem('theme', 'dark')
+            }else if(localStorage.getItem('theme') === 'light'){
+                document.getElementById('theme_css').href = "{{ url_for('static', filename='light_theme.css') }}";
+                document.getElementById('theme_button').innerHTML = 'Use Dark Theme';
+            }else{
+                document.getElementById('theme_css').href = "{{ url_for('static', filename='dark_theme.css') }}";
+                document.getElementById('theme_button').innerHTML = 'Use Light Theme';
+            }
+
+
+            function changeTheme(){
+                if(document.getElementById('theme_css').href.includes('dark_theme')){
+                    document.getElementById('theme_css').href = "{{ url_for('static', filename='light_theme.css') }}";
+                    document.getElementById('theme_button').innerHTML = 'Use Dark Theme';
+                    localStorage.setItem('theme', 'light')
+                }else{
+                    document.getElementById('theme_css').href = "{{ url_for('static', filename='dark_theme.css') }}";
+                    document.getElementById('theme_button').innerHTML = 'Use Light Theme';
+                    localStorage.setItem('theme', 'dark')
+                }
+                try {
+                    toggleSongTheme();
+                }catch(err){}
+            }
+        </script>
+        {% if header_title %}
+            {% if header_title == 'My Songs' %}
+                {% if user == current_user %}
+                    <h2 id="header-title">My Songs</h2>
+                {% else %}
+                    <h2 id="header-title">{{ user.username.capitalize() }}'s songs</h2>
+                {% endif %}
+            {% else %}
+                <h2 id="header-title">{{ header_title }}</h2>
+            {% endif %}
+        {% endif %}
+    </nav>
+
+
+    <div class="flashed_hidden" id="flashed_messages">
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+
+            <ul>
+                {% for message in messages %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+            <script type="text/javascript">
+                document.getElementById('flashed_messages').className = 'flashed_shown';
+                setTimeout(function(){
+                    document.getElementById('flashed_messages').className = document.getElementById('flashed_messages').className.replace("flashed_shown", "flashed_hidden");
+                }, 4150);
+            </script>
+        {% endif %}
+    {% endwith %}
+    </div>
+
+    <main>
+    {% block content %}{% endblock %}
+    </main>
+    <footer>
+
+        <p>Copyright &copy;
+            <script type="text/javascript">
+                var date = new Date();
+                document.write(date.getFullYear())
+            </script>
+             Curtis Holick
+        </p>
+
+        <a href="mailto:Curtis@holick.org" class="block-interactive">Contact</a>
+        <!--TODO: update privacy policy when deployed? (https://www.freeprivacypolicy.com/free-privacy-policy-generator.php)-->
+        <a href="{{ url_for('info') }}" class="block-interactive">Information</a>
+        <a href="{{ url_for('mission') }}" class="block-interactive">Our Mission</a>
+        <a href="{{ url_for('testimonials') }}" class="block-interactive">Testimonials</a>
+    </footer>
+</div>
+
+</body>
+</html>

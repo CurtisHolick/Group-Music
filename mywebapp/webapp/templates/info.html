@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="basic">
+        <h1>About Group Music</h1>
+        <!--TODO: finish information-->
+        <h2>What It Does</h2>
+        <p>Group Music is a web application I created to allow collaboration on Spotify playlists. Playlists on Spotify
+            can be shared and edited by multiple people natively, but this projects takes a different approach on
+            playlist collaboration.<br>
+            One of the major differences which separates Group Music is the limit on songs per
+            user. This allows a group to evenly create a playlist, without the worry about how many songs each person
+            adds. It also makes it much easier for each user to keep track of what songs they have added and replace
+            their songs.<br>
+            Group music also allows users who do not use Spotify regularly to interact with the collaborative playlist
+            easily. A Spoitfy account is not required for use, and users use Group Music's simple interface rather than
+            needing to learn to use Spotify's interface.<br>
+            Group Music is also entirely web based, so nothing needs to be downloaded to use.
+        </p>
+        <hr style="margin-top: 10px; margin-bottom: 10px;">
+        <!--<h3>How it works/what it does</h3>-->
+        <!--<h3>Why i made it</h3>-->
+        <h3>Technology</h3>
+        <p>Group Music uses Python and Python-Flask for the server side actions, while the user interface is designed
+            with standard HTML, CSS, and Javascript.</p>
+        <ul id="python-libraries" style="display: none;">
+            <li><a class="block-interactive" target="_blank" href="http://flask.pocoo.org/">Flask</a></li>
+            <li><a class="block-interactive" target="_blank" href="https://flask-wtf.readthedocs.io/en/stable/">Flask-WTF</a></li>
+            <li><a class="block-interactive" target="_blank" href="http://flask-sqlalchemy.pocoo.org/2.3/">Flask-SQLAlchemy</a></li>
+            <li><a class="block-interactive" target="_blank" href="https://flask-migrate.readthedocs.io/en/latest/">Flask-Migrate</a></li>
+            <li><a class="block-interactive" target="_blank" href="http://spotipy.readthedocs.io/en/latest/">Spotipy</a></li>
+        </ul>
+        <button type="button" onclick="togglePythonInfo()" class="block-interactive" id="full-python-button">Show All Python Libraries</button>
+
+        <script type="text/javascript">
+            function togglePythonInfo(){
+                if(document.getElementById('python-libraries').style.display == 'none'){
+                    document.getElementById('python-libraries').style.display = 'block';
+                    document.getElementById('full-python-button').innerHTML = 'Hide Python Libraries';
+                }else{
+                    document.getElementById('python-libraries').style.display = 'none';
+                    document.getElementById('full-python-button').innerHTML = 'Show All Python Libraries';
+                }
+            }
+        </script>
+
+
+
+        <!--<hr>-->
+        <!--<h2>About Me</h2>-->
+        <!--<p>Info about me</p>-->
+    </div>
+</div>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='info.css') }}" id="info_css" media="all">
+
+{% endblock %}

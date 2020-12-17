@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='user.css') }}" id="user_css" media="all">
+<div class="basic">
+    <div id="song-content">
+        {% for song in songs %}
+            <div class="song-flex-box">
+                <iframe id="song-frame" class="single-song-embed" src="https://open.spotify.com/embed?uri=spotify:track:{{ song.spotify_id }}" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+                {% if user == current_user %}
+                    <form action="" class="delete-button-form" method="post">
+                        <input type="submit" name="name{{ loop.index }}" value="Delete" class="block-interactive">
+                    </form>
+                {% endif %}
+
+            </div>
+            <br>
+        {% endfor %}
+    </div>
+    {% if user == current_user and (current_user.songs.all())|length < 5 %}
+        <a id="add-song-link" href="{{ url_for('add_song') }}" class="block-interactive">Add song</a>
+        <br>
+    {% endif %}
+
+    {% if user == current_user %}
+    <div>
+        <h3 id="song-count">{{ (current_user.songs.all())|length }}/5 songs</h3>
+        <!--<h2>Join Playlist</h2>-->
+    <!-- TODO: add ability to join playlists-->
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

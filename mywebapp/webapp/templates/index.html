@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <!--<h1>Hello {{ current_user.username.capitalize() }}. Welcome!</h1>-->
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='index.css') }}" id="index_css" media="all">
+
+    <div>
+
+        <!--<h3>Current Group Playlist</h3>-->
+        <!--<h2 style="text-align: center;">Current Playlist</h2>-->
+        <iframe id="playlist-frame" class="spotify-playlist" src="https://open.spotify.com/embed?uri=spotify:playlist:{{ playlist_code }}"
+                width="600" height="680" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+
+        <script type="text/javascript">
+            toggleSongTheme();
+            function toggleSongTheme(){
+                if(document.getElementById('theme_css').href.includes('dark_theme')){
+                    document.getElementById('playlist-frame').src = "https://open.spotify.com/embed?uri=spotify:user:legosail2424:playlist:{{ playlist_code }}";
+                }else{
+                    document.getElementById('playlist-frame').src = "https://open.spotify.com/embed?uri=spotify:user:legosail2424:playlist:{{ playlist_code }}&theme=white";
+                }
+            }
+        </script>
+    </div>
+
+
+{% endblock %}
