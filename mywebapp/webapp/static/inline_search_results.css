@@ -1,0 +1,33 @@
+#search-input {
+    flex-grow: 1;
+    width: auto;
+}
+input#search-bar {
+    flex-grow: 9;
+    width: auto;
+}
+#search-flex-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+.song-flex-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+.single-song-embed{
+    flex-grow: 9;
+}
+.add-button-form {
+    flex-grow: 1;
+    display: flex;
+    align-items: stretch;
+}
+.add-button-form .block-interactive {
+    flex-grow: 1;
+    width: 10%;
+}

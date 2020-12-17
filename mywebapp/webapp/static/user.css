@@ -1,0 +1,52 @@
+#add-song-link {
+    background-color: var(--nav-color);
+    display: block;
+    padding: 20px 0px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    text-align: center;
+}
+#add-song-link:hover {
+    background-color: var(--hover-color);
+}
+
+
+#song-content{
+    width: 60%;
+    margin: auto;
+    display: block;
+}
+
+.song-flex-box {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: stretch;
+}
+
+
+
+.single-song-embed{
+    /*margin: auto;*/
+    /*display: inline-block;*/
+    /*width: 80%;*/
+    flex-grow: 9;
+
+}
+.delete-button-form {
+    /*width: 20%;*/
+    /*display: inline-block;*/
+    /*position: absolute;*/
+    flex-grow: 1;
+    display: flex;
+    align-items: stretch;
+}
+
+.delete-button-form .block-interactive {
+    flex-grow: 1;
+}
+
+#song-count {
+    text-align: center;
+}

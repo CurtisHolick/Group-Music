@@ -1,0 +1,85 @@
+div.basic {
+    margin: auto;
+    width: 40%
+}
+.login-info-input {
+    outline: none;
+    border: 0.1em solid var(--nav-color);
+    padding: 1em;
+    margin: 0 0 5px;
+
+    min-width: 200px;
+    width: 100%;
+}
+.login-info-input:focus {
+    border: 0.3em solid var(--nav-color);
+    padding: 0.8em;
+}
+
+#new-account-link {
+    background-color: var(--nav-color);
+    padding: 14px 0;
+}
+#new-account-link:hover {
+    background-color: var(--hover-color);
+}
+.login-block {
+    width: 100%;
+    margin: 5px 0;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.input-title {
+    visibility: hidden;
+    margin-top: 2px;
+    background-color: var(--nav-color);
+    padding: 0.3em 0.3em 0;
+}
+.login-info-input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+.login-info-input:focus ~.input-title, .login-info-input:not(:placeholder-shown) ~.input-title {
+    visibility: visible;
+}
+
+/*--------custom checkbox--------*/
+#remember-me-input-p {
+    margin: 5px 0;
+    display: flex;
+    align-items: center;
+}
+#remember-me-input-p:hover #custom-checkbox {
+    border: 0.3em solid var(--nav-color);
+    padding: 0.3em;
+}
+#custom-checkbox {
+    background-color: var(--background-color);
+    display: inline-block;
+    border: 0.1em solid var(--nav-color);
+    padding: 0.5em;
+    margin-right: 8px;
+}
+#remember-me-input-p input {
+    display: none;
+}
+#remember-me-input-p input:checked ~#custom-checkbox {
+    background-color: var(--background-color);
+    border: 0.1em solid var(--nav-color);
+    padding: 0.2em;
+}
+#remember-me-input-p:hover input:checked ~#custom-checkbox {
+    background-color: var(--hover-color);
+    border: 0.3em solid var(--nav-color);
+    padding: 0.0em;
+}
+
+#remember-me-input-p input:checked ~#custom-checkbox::after {
+    background-color: var(--hover-color);
+    content: "";
+    display: block;
+    padding: 0.3em;
+
+}

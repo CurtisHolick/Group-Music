@@ -1,0 +1,23 @@
+input#search-bar {
+    padding: 11px;
+    outline: none;
+    border: 1px solid var(--nav-color);
+    width: 100%;
+
+}
+input#search-bar:focus {
+    padding: 8px;
+    border: 4px solid var(--nav-color);
+}
+main {
+    width: 60%;
+    margin: auto;
+}
+input.block-interactive {
+    width: 100%;
+}
+.form-error {
+    /*text-align: center;*/
+    padding-top: 2px;
+    padding-bottom: 2px;
+}

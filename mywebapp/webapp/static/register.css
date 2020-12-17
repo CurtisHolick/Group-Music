@@ -1,0 +1,36 @@
+div.basic {
+    margin: auto;
+    width: 40%
+}
+.register-info-input {
+    outline: none;
+    border: 0.1em solid var(--nav-color);
+    padding: 1em;
+    min-width: 200px;
+    width: 100%;
+    margin: 0 0 5px;
+}
+.register-info-input:focus {
+    border: 0.3em solid var(--nav-color);
+    padding: 0.8em;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column-reverse;
+}
+.input-title {
+    visibility: hidden;
+    margin-top: 2px;
+    background-color: var(--nav-color);
+    padding: 0.3em 0.3em 0;
+}
+.register-info-input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+.register-info-input:focus ~.input-title, .register-info-input:not(:placeholder-shown) ~.input-title {
+    visibility: visible;
+}
+input.block-interactive {
+    width: 100%;
+}
