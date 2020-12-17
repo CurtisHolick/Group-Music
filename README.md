@@ -48,5 +48,3 @@ It also has the option to toggle between a light and dark theme, and will rememb
 - requests
 - setuptools
 - urllib3
-
--
