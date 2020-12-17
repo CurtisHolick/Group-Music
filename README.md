@@ -24,4 +24,29 @@ I have provided images of the web application here, and there are additional in 
 It also has the option to toggle between a light and dark theme, and will remember a users preference. 
 
 ## Packages Used
+(many are dependencies of Flask)
+- Spotipy
+- Jinja2
+- Flask
+- Flask-WTF
+- Flask-SQLAlchemy
+- Flask-Migrate
+- Flask-Admin
+- Flask-Login
+- Mako
+- MarkupSafe
+- WTForms
+- Werkzeug
+- alembic
+- certifi
+- chardet
+- click
+- dnspython
+- emailvalidator
+- idna
+- itsdangerous
+- requests
+- setuptools
+- urllib3
 
+-
