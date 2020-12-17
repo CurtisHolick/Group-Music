@@ -8,15 +8,15 @@ Users are able to add a set amount of songs to a playlist, which is created and 
 Group Music is also entirely web based, so in theory nothing would need to be downloaded to use.
 
 ## Home Page
-![](darkHomepage.png)
+![](Images/darkHomepage.png)
 
 ## Dashboard
-![](darkDashboard.png)
+![](Images/darkDashboard.png)
 
 ## Search Results
-![](darkSearchResults.png)
+![](Images/darkSearchResults.png)
 
 ## Light Theme
-![](lightDashboard.png)
+![](Images/lightDashboard.png)
 
 It also has the option to toggle between a light and dark theme, and will remember a users preference. 
