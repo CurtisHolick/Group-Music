@@ -11,6 +11,8 @@ Group Music is also entirely web based, so in theory nothing would need to be do
 
 I have provided images of the web application here, and there are additional in the `Images` folder. The application will not run without the APIs being setup, but I have my API data stored in files not uploaded here. 
 
+Created April 2018
+
 ## Home Page
 ![](Images/darkHomepage.png)
 
