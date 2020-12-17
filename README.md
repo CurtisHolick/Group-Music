@@ -5,7 +5,7 @@ Group Music is a web application I created to allow collaboration on Spotify pla
 
 It uses Flask for Python, as well as HTML & CSS
 
-Users are able to add a set amount of songs to a playlist, which is created and updated on , spotify.
+Users are able to add a set amount of songs to a playlist, which is created and updated on spotify.
 
 Group Music is also entirely web based, so in theory nothing would need to be downloaded to use.
 
